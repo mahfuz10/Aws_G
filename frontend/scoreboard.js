@@ -1,6 +1,6 @@
 function get_scoreboard() {
 
-	return fetch("http://3.133.98.62:8080/scoreboards")
+	return fetch("http://3.135.205.49:8080/scoreboards")
 	.then(response => response.json())
 
 }

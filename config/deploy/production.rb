@@ -1,14 +1,14 @@
-set :branch, 'master'
+set :branch, 'smashbar2'
 
 # set :stage, :development
 
-set :deploy_to, '/home/deployer/apps/Space_Bar_Smasher_App_Game'
+set :deploy_to, '/home/ubuntu/apps/Space_Bar_Smasher_App_Game'
 # ask(:server_ip, 'What is server ip?', echo: true)
 
 # ask(:server_ip, 'What is server ip?', echo: true)
 # server fetch(:server_ip), user: 'deployer', roles: %w{app db web}
 
-server '3.133.98.62', user: 'deployer', roles: %w{app db web}
+server '3.135.205.49', user: 'deployer', roles: %w{app db web}
 
 # server-based syntax
 # ======================
