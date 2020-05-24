@@ -8,7 +8,7 @@ set :deploy_to, '/home/ubuntu/apps/Space_Bar_Smasher_App_Game'
 # ask(:server_ip, 'What is server ip?', echo: true)
 # server fetch(:server_ip), user: 'deployer', roles: %w{app db web}
 
-server '3.135.205.49', user: 'deployer', roles: %w{app db web}
+server '3.135.205.49', user: 'ubuntu', roles: %w{app db web}
 
 # server-based syntax
 # ======================
