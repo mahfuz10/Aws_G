@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", start_game)
 
+var backend_root =  'https://spacebar-smash.herokuapp.com';
+
 start_game()
 
 function start_game() {
@@ -12,7 +14,7 @@ function start_game() {
 
 function get_scoreboard() {
 
-	return fetch("http://3.135.205.49:8080/scoreboards")
+	return fetch(backend_root+"/scoreboards")
 	.then(response => response.json())
 
 }
@@ -335,7 +337,7 @@ function submit_form_listener(event) {
 	// } else if (name.includes('ali') || name.includes('ALI') || name.includes('Ali') || name.includes('aLi') || name.includes('alI') || name.includes('AlI') || name.includes('ALi') || name.includes('aLI')) {
 	// 	alert("Nice try, Ali...but I don't trust you.")
 	} else {
-	fetch("http://3.135.205.49:8080/players", {
+	fetch(backend_root+"/players", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -347,7 +349,7 @@ function submit_form_listener(event) {
 		})
 		.then(response => response.json())
 		.then((player_object) => {
-			fetch("http://3.135.205.49:8080/scoreboards", {
+			fetch(backend_root+"/scoreboards", {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",
@@ -364,7 +366,7 @@ function submit_form_listener(event) {
 					get_scoreboard()
 					.then((response_obj) => {
 						if (response_obj.data.length < 21) {
-							(fetch("http://3.135.205.49:8080/scoreboards")
+							(fetch(backend_root+"/scoreboards")
 								.then(response => response.json())
 								.then(new_scoreboard => {
 
@@ -379,10 +381,10 @@ function submit_form_listener(event) {
 							)
 						} else {
 							for (let i = 20; i < response_obj.data.length; i++) {
-								fetch(`http://3.135.205.49:8080/scoreboards/${response_obj.data[i].id}`, {
+								fetch(`${backend_root}/scoreboards/${response_obj.data[i].id}`, {
 										method: "DELETE"
 									})
-									.then(fetch("http://3.135.205.49:8080/scoreboards")
+									.then(fetch(backend_root+"/scoreboards")
 										.then(response => response.json())
 										.then(new_scoreboard => {
 
@@ -430,7 +432,7 @@ function create_scoreboard(MAIN_WRAPPER, created_player) {
 
 	scoreboard_table.append(scoreboard_table_top_row)
 
-	fetch("http://3.135.205.49:8080/scoreboards")
+	fetch(backend_root+"/scoreboards")
 		.then(response => response.json())
 		.then((new_scoreboards) => {
 			let i = 1
